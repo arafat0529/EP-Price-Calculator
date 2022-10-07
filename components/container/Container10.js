@@ -77,7 +77,7 @@ const Container10 = () => {
           hvac3Ton * hvac
       );
     }
-  });
+  }, []);
   return (
     <div>
       <div>

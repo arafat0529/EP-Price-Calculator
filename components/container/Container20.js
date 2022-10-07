@@ -68,7 +68,7 @@ const Container20 = () => {
           hvacprice * hvac
       );
     }
-  });
+  }, []);
   return (
     <div>
       <div>
