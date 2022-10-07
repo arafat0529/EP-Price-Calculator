@@ -82,7 +82,7 @@ const Cabinet = () => {
         </div>
       </div>
       <div>
-        <FormControl fullWidth sx={{ m: 1 }}>
+        <FormControl fullWidth>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
