@@ -85,7 +85,7 @@ const Container40 = () => {
           hvacprice * hvac
       );
     }
-  }, []);
+  }, [pcs, batteryTray, installation, hvac, hvacType, batteryTrayType]);
   return (
     <div>
       <div>

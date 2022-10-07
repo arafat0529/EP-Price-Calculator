@@ -77,7 +77,7 @@ const Container10 = () => {
           hvac3Ton * hvac
       );
     }
-  }, []);
+  }, [pcs, batteryTray, installation, hvac, auxKit]);
   return (
     <div>
       <div>

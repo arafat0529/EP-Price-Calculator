@@ -34,7 +34,7 @@ const Cabinet = () => {
     } else {
       setPrice(pcs * pcsPrice + battery * batteryPrice);
     }
-  }, []);
+  }, [pcs, battery, installation]);
   return (
     <div>
       <div>
