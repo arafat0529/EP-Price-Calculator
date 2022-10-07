@@ -18,20 +18,27 @@ const Container10 = () => {
   const [installation, setInstallation] = useState(false);
   const [hvac, setHvac] = useState(0);
   const [auxKit, setAuxKit] = useState(true);
+  const [fss, setFss] = useState(true);
+  const [ats, setAts] = useState(true);
   const Container10ftPrice = 18000;
   const hvac3Ton = 11505;
   const pcsPrice = 200;
   const batteryPrice = 370;
   const installationPrice = 0;
+  const auxKitPrice = 0;
+  const fssPrice = 0;
+  const atsPrice = 0;
 
   function instalationCalculate() {
     const numOfCabinent = batteryTray / 7;
-    if (numOfCabinent >= 5) {
-      installationPrice = 13500;
-    } else if (numOfCabinent >= 3) {
-      installationPrice = 12500;
-    } else {
-      installationPrice = 10500;
+    if (installation) {
+      if (numOfCabinent >= 5) {
+        installationPrice = 13500;
+      } else if (numOfCabinent >= 3) {
+        installationPrice = 12500;
+      } else {
+        installationPrice = 10500;
+      }
     }
   }
 
@@ -44,40 +51,52 @@ const Container10 = () => {
   const handleinstallationChange = (event) => {
     setInstallation(!installation);
   };
+  const handleFssChange = (event) => {
+    setFss(!fss);
+  };
+  const handleAtsChange = (event) => {
+    setAts(!ats);
+  };
   const handleAuxKitChange = (event) => {
     setAuxKit(!auxKit);
   };
   const handHVACChange = (event) => {
     setHvac(event.target.value);
   };
-  const auxKitPrice = 0;
+
   function checkAuxKit() {
     if (auxKit) {
       auxKitPrice = 5500;
     }
   }
+
+  function checkFss() {
+    if (fss) {
+      fssPrice = 2000;
+    }
+  }
+
+  function checkAts() {
+    if (ats) {
+      atsPrice = 3500;
+    }
+  }
   useEffect(() => {
     instalationCalculate();
     checkAuxKit();
-    if (installation) {
-      setPrice(
-        pcs * pcsPrice +
-          batteryKwh * batteryPrice * batteryTray +
-          auxKitPrice +
-          installationPrice +
-          Container10ftPrice +
-          hvac3Ton * hvac
-      );
-    } else {
-      setPrice(
-        pcs * pcsPrice +
-          batteryKwh * batteryPrice * batteryTray +
-          auxKitPrice +
-          Container10ftPrice +
-          hvac3Ton * hvac
-      );
-    }
-  }, [pcs, batteryTray, installation, hvac, auxKit]);
+    checkFss();
+    checkAts();
+    setPrice(
+      pcs * pcsPrice +
+        batteryKwh * batteryPrice * batteryTray +
+        auxKitPrice +
+        fssPrice +
+        atsPrice +
+        installationPrice +
+        Container10ftPrice +
+        hvac3Ton * hvac
+    );
+  }, [pcs, batteryTray, installation, hvac, auxKit, ats, fss]);
   return (
     <div>
       <div>
@@ -147,6 +166,18 @@ const Container10 = () => {
               />
             }
             label="Aux Kit"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox checked={fss} onChange={handleFssChange} name="fss" />
+            }
+            label="FSS"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox checked={ats} onChange={handleAtsChange} name="ats" />
+            }
+            label="ATS"
           />
           <FormControlLabel
             control={

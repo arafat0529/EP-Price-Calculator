@@ -17,7 +17,7 @@ const Cabinet = () => {
   const [installation, setInstallation] = useState(false);
   const pcsPrice = 200;
   const batteryPrice = 370;
-  const installationPrice = 9999;
+  let installationPrice = 0;
 
   const handlePCSChange = (event) => {
     setPcs(event.target.value);
@@ -28,7 +28,16 @@ const Cabinet = () => {
   const handleinstallationChange = (event) => {
     setInstallation(!installation);
   };
+
+  function calcInstallation() {
+    if (battery <= 77) {
+      installationPrice = 5000;
+    } else {
+      installationPrice = 6500;
+    }
+  }
   useEffect(() => {
+    calcInstallation();
     if (installation) {
       setPrice(pcs * pcsPrice + battery * batteryPrice + installationPrice);
     } else {
@@ -52,22 +61,40 @@ const Cabinet = () => {
             <MenuItem value={60}>60</MenuItem>
           </Select>
         </FormControl>
-        <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="battery">Battery Quantity</InputLabel>
-          <Select
-            labelId="battery"
-            id="battery"
-            value={battery}
-            label="Battery Quantity"
-            onChange={handleBatteryChange}
-          >
-            <MenuItem value={0}>0</MenuItem>
-            <MenuItem value={66}>66</MenuItem>
-            <MenuItem value={77}>77</MenuItem>
-            <MenuItem value={143}>143</MenuItem>
-            <MenuItem value={165}>165</MenuItem>
-          </Select>
-        </FormControl>
+        {pcs <= 30 ? (
+          <FormControl required sx={{ m: 1, minWidth: 200 }}>
+            <InputLabel id="battery">Battery Quantity</InputLabel>
+            <Select
+              labelId="battery"
+              id="battery"
+              value={battery}
+              label="Battery Quantity"
+              onChange={handleBatteryChange}
+            >
+              <MenuItem value={0}>0</MenuItem>
+              <MenuItem value={66}>66</MenuItem>
+              <MenuItem value={77}>77</MenuItem>
+              <MenuItem value={143}>143</MenuItem>
+              <MenuItem value={165}>165</MenuItem>
+            </Select>
+          </FormControl>
+        ) : (
+          <FormControl required sx={{ m: 1, minWidth: 200 }}>
+            <InputLabel id="battery">Battery Quantity</InputLabel>
+            <Select
+              labelId="battery"
+              id="battery"
+              value={battery}
+              label="Battery Quantity"
+              onChange={handleBatteryChange}
+            >
+              <MenuItem value={0}>0</MenuItem>
+
+              <MenuItem value={143}>143</MenuItem>
+              <MenuItem value={165}>165</MenuItem>
+            </Select>
+          </FormControl>
+        )}
         <div>
           <FormControlLabel
             control={

@@ -16,6 +16,8 @@ const Container20 = () => {
   const [batteryTray, setBatteryTray] = useState(0);
   const [price, setPrice] = useState(0);
   const [installation, setInstallation] = useState(false);
+  const [fss, setFss] = useState(true);
+  const [ats, setAts] = useState(true);
   const [hvac, setHvac] = useState(1);
   const [hvacType, setHvacType] = useState(3);
   const Container20ftPrice = 65000;
@@ -24,7 +26,9 @@ const Container20 = () => {
   const hvacprice = 0;
   const pcsPrice = 120;
   const batteryPrice = 270;
-  const installationPrice = 17500;
+  const installationPrice = 0;
+  const fssPrice = 0;
+  const atsPrice = 0;
 
   const handlePCSChange = (event) => {
     setPcs(event.target.value);
@@ -34,6 +38,12 @@ const Container20 = () => {
   };
   const handleinstallationChange = (event) => {
     setInstallation(!installation);
+  };
+  const handleFssChange = (event) => {
+    setFss(!fss);
+  };
+  const handleAtsChange = (event) => {
+    setAts(!ats);
   };
 
   const handHVACChange = (event) => {
@@ -50,25 +60,38 @@ const Container20 = () => {
       hvacprice = hvac6Ton;
     }
   }
+  function checkInstallation() {
+    if (installation) {
+      installationPrice = 17500;
+    }
+  }
+  function checkFss() {
+    if (fss) {
+      fssPrice = 2000;
+    }
+  }
+
+  function checkAts() {
+    if (ats) {
+      atsPrice = 3500;
+    }
+  }
+
   useEffect(() => {
     setHvacPrice();
-    if (installation) {
-      setPrice(
-        pcs * pcsPrice +
-          batteryKwh * batteryPrice * batteryTray +
-          installationPrice +
-          Container20ftPrice +
-          hvacprice * hvac
-      );
-    } else {
-      setPrice(
-        pcs * pcsPrice +
-          batteryKwh * batteryPrice * batteryTray +
-          Container20ftPrice +
-          hvacprice * hvac
-      );
-    }
-  }, [pcs, batteryTray, installation, hvac, hvacType]);
+    checkInstallation();
+    checkFss();
+    checkAts();
+    setPrice(
+      pcs * pcsPrice +
+        batteryKwh * batteryPrice * batteryTray +
+        installationPrice +
+        fssPrice +
+        atsPrice +
+        Container20ftPrice +
+        hvacprice * hvac
+    );
+  }, [pcs, batteryTray, installation, hvac, hvacType, fss, ats]);
   return (
     <div>
       <div>
@@ -132,6 +155,18 @@ const Container20 = () => {
           </Select>
         </FormControl>
         <div>
+          <FormControlLabel
+            control={
+              <Checkbox checked={fss} onChange={handleFssChange} name="fss" />
+            }
+            label="FSS"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox checked={ats} onChange={handleAtsChange} name="ats" />
+            }
+            label="ATS"
+          />
           <FormControlLabel
             control={
               <Checkbox
