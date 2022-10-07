@@ -68,16 +68,18 @@ const Cabinet = () => {
             <MenuItem value={165}>165</MenuItem>
           </Select>
         </FormControl>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={installation}
-              onChange={handleinstallationChange}
-              name="installation"
-            />
-          }
-          label="Installation"
-        />
+        <div>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={installation}
+                onChange={handleinstallationChange}
+                name="installation"
+              />
+            }
+            label="Installation"
+          />
+        </div>
       </div>
       <div>
         <FormControl fullWidth sx={{ m: 1 }}>
