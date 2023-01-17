@@ -7,6 +7,7 @@ import logo from '../public/logo/Untitled.png';
 export default function Home() {
   return (
     <Card
+      className={styles.body}
       sx={{
         marginTop: 10,
         borderRadius: 5,

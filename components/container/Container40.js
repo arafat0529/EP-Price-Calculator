@@ -106,28 +106,13 @@ const Container40 = () => {
         Container40ftPrice +
         hvacprice * hvac
     );
-  }, [
-    pcs,
-    batteryTray,
-    installation,
-    hvac,
-    hvacType,
-    batteryTrayType,
-    fss,
-    ats,
-  ]);
+  }, [pcs, batteryTray, installation, hvac, hvacType, batteryTrayType, fss, ats]);
   return (
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="pcs">PCS Quantity</InputLabel>
-          <Select
-            labelId="pcs"
-            id="pcs"
-            value={pcs}
-            label="PCS Quantity"
-            onChange={handlePCSChange}
-          >
+          <Select labelId="pcs" id="pcs" value={pcs} label="PCS KW" onChange={handlePCSChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={500}>500</MenuItem>
             <MenuItem value={750}>750</MenuItem>
@@ -137,26 +122,14 @@ const Container40 = () => {
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="hvac">HVAC Type</InputLabel>
-          <Select
-            labelId="hvacType"
-            id="hvacType"
-            value={hvacType}
-            label="HVAC Type"
-            onChange={handleHVACTypeChange}
-          >
+          <Select labelId="hvacType" id="hvacType" value={hvacType} label="HVAC Type" onChange={handleHVACTypeChange}>
             <MenuItem value={3}>3 ton </MenuItem>
             <MenuItem value={6}>6 ton</MenuItem>
           </Select>
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="hvac">HVAC Quantity</InputLabel>
-          <Select
-            labelId="hvac"
-            id="hvac"
-            value={hvac}
-            label="HVAC Quantity"
-            onChange={handleHVACChange}
-          >
+          <Select labelId="hvac" id="hvac" value={hvac} label="HVAC Quantity" onChange={handleHVACChange}>
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
           </Select>
@@ -207,26 +180,10 @@ const Container40 = () => {
           </FormControl>
         )}
         <div>
+          <FormControlLabel control={<Checkbox checked={fss} onChange={handleFssChange} name="fss" />} label="FSS" />
+          <FormControlLabel control={<Checkbox checked={ats} onChange={handleAtsChange} name="ats" />} label="ATS" />
           <FormControlLabel
-            control={
-              <Checkbox checked={fss} onChange={handleFssChange} name="fss" />
-            }
-            label="FSS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={ats} onChange={handleAtsChange} name="ats" />
-            }
-            label="ATS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={installation}
-                onChange={handleinstallationChange}
-                name="installation"
-              />
-            }
+            control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
             label="Installation"
           />
         </div>

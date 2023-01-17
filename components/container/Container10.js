@@ -106,7 +106,7 @@ const Container10 = () => {
             labelId="pcs"
             id="pcs"
             value={pcs}
-            label="PCS Quantity"
+            label="PCS KW"
             onChange={handlePCSChange}
           >
             <MenuItem value={0}>0</MenuItem>
