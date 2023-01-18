@@ -48,14 +48,8 @@ const Cabinet = () => {
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="pcs">PCS Quantity</InputLabel>
-          <Select
-            labelId="pcs"
-            id="pcs"
-            value={pcs}
-            label="PCS Quantity"
-            onChange={handlePCSChange}
-          >
+          <InputLabel id="pcs">PCS KW</InputLabel>
+          <Select labelId="pcs" id="pcs" value={pcs} label="PCS KW" onChange={handlePCSChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={30}>30</MenuItem>
             <MenuItem value={60}>60</MenuItem>
@@ -97,13 +91,7 @@ const Cabinet = () => {
         )}
         <div>
           <FormControlLabel
-            control={
-              <Checkbox
-                checked={installation}
-                onChange={handleinstallationChange}
-                name="installation"
-              />
-            }
+            control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
             label="Installation"
           />
         </div>

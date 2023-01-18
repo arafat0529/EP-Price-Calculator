@@ -101,14 +101,8 @@ const Container10 = () => {
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="pcs">PCS Quantity</InputLabel>
-          <Select
-            labelId="pcs"
-            id="pcs"
-            value={pcs}
-            label="PCS KW"
-            onChange={handlePCSChange}
-          >
+          <InputLabel id="pcs">PCS KW</InputLabel>
+          <Select labelId="pcs" id="pcs" value={pcs} label="PCS KW" onChange={handlePCSChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={30}>30</MenuItem>
             <MenuItem value={60}>60</MenuItem>
@@ -120,13 +114,7 @@ const Container10 = () => {
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="hvac">HVAC Quantity</InputLabel>
-          <Select
-            labelId="hvac"
-            id="hvac"
-            value={hvac}
-            label="HVAC Quantity"
-            onChange={handHVACChange}
-          >
+          <Select labelId="hvac" id="hvac" value={hvac} label="HVAC Quantity" onChange={handHVACChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={1}>1</MenuItem>
           </Select>
@@ -158,35 +146,13 @@ const Container10 = () => {
         </FormControl>
         <div>
           <FormControlLabel
-            control={
-              <Checkbox
-                checked={auxKit}
-                onChange={handleAuxKitChange}
-                name="auxKit"
-              />
-            }
+            control={<Checkbox checked={auxKit} onChange={handleAuxKitChange} name="auxKit" />}
             label="Aux Kit"
           />
+          <FormControlLabel control={<Checkbox checked={fss} onChange={handleFssChange} name="fss" />} label="FSS" />
+          <FormControlLabel control={<Checkbox checked={ats} onChange={handleAtsChange} name="ats" />} label="ATS" />
           <FormControlLabel
-            control={
-              <Checkbox checked={fss} onChange={handleFssChange} name="fss" />
-            }
-            label="FSS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={ats} onChange={handleAtsChange} name="ats" />
-            }
-            label="ATS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={installation}
-                onChange={handleinstallationChange}
-                name="installation"
-              />
-            }
+            control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
             label="Installation"
           />
         </div>

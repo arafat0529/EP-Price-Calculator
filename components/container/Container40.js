@@ -111,7 +111,7 @@ const Container40 = () => {
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="pcs">PCS Quantity</InputLabel>
+          <InputLabel id="pcs">PCS KW</InputLabel>
           <Select labelId="pcs" id="pcs" value={pcs} label="PCS KW" onChange={handlePCSChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={500}>500</MenuItem>

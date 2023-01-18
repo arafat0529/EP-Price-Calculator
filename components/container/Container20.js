@@ -96,7 +96,7 @@ const Container20 = () => {
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="pcs">PCS Quantity</InputLabel>
+          <InputLabel id="pcs">PCS KW</InputLabel>
           <Select
             labelId="pcs"
             id="pcs"
