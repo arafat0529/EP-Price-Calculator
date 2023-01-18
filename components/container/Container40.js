@@ -135,7 +135,7 @@ const Container40 = () => {
           </Select>
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
-          <InputLabel id="batteryTrayType">Battery Tray Type</InputLabel>
+          <InputLabel id="batteryTrayType">Battery Type</InputLabel>
           <Select
             labelId="batteryTrayType"
             id="batteryTrayType"
@@ -145,6 +145,7 @@ const Container40 = () => {
           >
             <MenuItem value={27}>27 ah </MenuItem>
             <MenuItem value={100}>100 ah</MenuItem>
+            <MenuItem value={280}>280 ah</MenuItem>
           </Select>
         </FormControl>
         {batteryTrayType === 27 ? (
