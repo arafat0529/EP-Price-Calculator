@@ -145,7 +145,6 @@ const Container40 = () => {
           >
             <MenuItem value={27}>27 ah </MenuItem>
             <MenuItem value={100}>100 ah</MenuItem>
-            <MenuItem value={280}>280 ah</MenuItem>
           </Select>
         </FormControl>
         {batteryTrayType === 27 ? (

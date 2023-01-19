@@ -14,6 +14,7 @@ const Cabinet = () => {
   const [pcs, setPcs] = useState(0);
   const [battery, setBattery] = useState(0);
   const [price, setPrice] = useState(0);
+  const [totalCapacity, setTotalCapacity] = useState(0);
   const [installation, setInstallation] = useState(false);
   const pcsPrice = 200;
   const batteryPrice = 370;
@@ -89,6 +90,17 @@ const Cabinet = () => {
             </Select>
           </FormControl>
         )}
+        {/* <div>
+          <FormControl fullWidth>
+            <InputLabel htmlFor="outlined-adornment-amount">Total Capacity</InputLabel>
+            <OutlinedInput
+              id="outlined-adornment-amount"
+              value={totalCapacity}
+              endAdornment={<InputAdornment position="end">kwh</InputAdornment>}
+              label="totalCapacity"
+            />
+          </FormControl>
+        </div> */}
         <div>
           <FormControlLabel
             control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
@@ -96,6 +108,7 @@ const Cabinet = () => {
           />
         </div>
       </div>
+
       <div>
         <FormControl fullWidth>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
