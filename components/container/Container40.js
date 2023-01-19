@@ -21,6 +21,7 @@ const Container40 = () => {
   const [hvac, setHvac] = useState(1);
   const [hvacType, setHvacType] = useState(3);
   const [batteryTrayType, setBatteryTrayType] = useState(27);
+  const [totalCapacity, setTotalCapacity] = useState(0);
   const Container40ftPrice = 80000;
   const hvac3Ton = 11505;
   const hvac6Ton = 19559;
@@ -106,6 +107,7 @@ const Container40 = () => {
         Container40ftPrice +
         hvacprice * hvac
     );
+    setTotalCapacity(batteryTray * batteryKwh);
   }, [pcs, batteryTray, installation, hvac, hvacType, batteryTrayType, fss, ats]);
   return (
     <div>
@@ -188,6 +190,18 @@ const Container40 = () => {
           />
         </div>
       </div>
+      <div>
+        <FormControl fullWidth>
+          <InputLabel htmlFor="outlined-adornment-amount">Total Capacity</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-amount"
+            value={totalCapacity}
+            endAdornment={<InputAdornment position="end">kwh</InputAdornment>}
+            label="totalCapacity"
+          />
+        </FormControl>
+      </div>
+      <br></br>
       <div>
         <FormControl fullWidth>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>

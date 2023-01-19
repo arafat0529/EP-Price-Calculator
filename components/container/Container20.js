@@ -20,6 +20,7 @@ const Container20 = () => {
   const [ats, setAts] = useState(true);
   const [hvac, setHvac] = useState(1);
   const [hvacType, setHvacType] = useState(3);
+  const [totalCapacity, setTotalCapacity] = useState(0);
   const Container20ftPrice = 65000;
   const hvac3Ton = 11505;
   const hvac6Ton = 19559;
@@ -91,19 +92,14 @@ const Container20 = () => {
         Container20ftPrice +
         hvacprice * hvac
     );
+    setTotalCapacity(batteryTray * batteryKwh);
   }, [pcs, batteryTray, installation, hvac, hvacType, fss, ats]);
   return (
     <div>
       <div>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="pcs">PCS KW</InputLabel>
-          <Select
-            labelId="pcs"
-            id="pcs"
-            value={pcs}
-            label="PCS KW"
-            onChange={handlePCSChange}
-          >
+          <Select labelId="pcs" id="pcs" value={pcs} label="PCS KW" onChange={handlePCSChange}>
             <MenuItem value={0}>0</MenuItem>
             <MenuItem value={250}>250</MenuItem>
             <MenuItem value={300}>300</MenuItem>
@@ -113,26 +109,14 @@ const Container20 = () => {
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="hvac">HVAC Type</InputLabel>
-          <Select
-            labelId="hvacType"
-            id="hvacType"
-            value={hvacType}
-            label="HVAC Type"
-            onChange={handHVACTypeChange}
-          >
+          <Select labelId="hvacType" id="hvacType" value={hvacType} label="HVAC Type" onChange={handHVACTypeChange}>
             <MenuItem value={3}>3 ton </MenuItem>
             <MenuItem value={6}>6 ton</MenuItem>
           </Select>
         </FormControl>
         <FormControl required sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="hvac">HVAC Quantity</InputLabel>
-          <Select
-            labelId="hvac"
-            id="hvac"
-            value={hvac}
-            label="HVAC Quantity"
-            onChange={handHVACChange}
-          >
+          <Select labelId="hvac" id="hvac" value={hvac} label="HVAC Quantity" onChange={handHVACChange}>
             <MenuItem value={1}>1</MenuItem>
             <MenuItem value={2}>2</MenuItem>
           </Select>
@@ -155,30 +139,26 @@ const Container20 = () => {
           </Select>
         </FormControl>
         <div>
+          <FormControlLabel control={<Checkbox checked={fss} onChange={handleFssChange} name="fss" />} label="FSS" />
+          <FormControlLabel control={<Checkbox checked={ats} onChange={handleAtsChange} name="ats" />} label="ATS" />
           <FormControlLabel
-            control={
-              <Checkbox checked={fss} onChange={handleFssChange} name="fss" />
-            }
-            label="FSS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox checked={ats} onChange={handleAtsChange} name="ats" />
-            }
-            label="ATS"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={installation}
-                onChange={handleinstallationChange}
-                name="installation"
-              />
-            }
+            control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
             label="Installation"
           />
         </div>
       </div>
+      <div>
+        <FormControl fullWidth>
+          <InputLabel htmlFor="outlined-adornment-amount">Total Capacity</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-amount"
+            value={totalCapacity}
+            endAdornment={<InputAdornment position="end">kwh</InputAdornment>}
+            label="totalCapacity"
+          />
+        </FormControl>
+      </div>
+      <br></br>
       <div>
         <FormControl fullWidth>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>

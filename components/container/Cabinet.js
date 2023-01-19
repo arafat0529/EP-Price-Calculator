@@ -44,6 +44,7 @@ const Cabinet = () => {
     } else {
       setPrice(pcs * pcsPrice + battery * batteryPrice);
     }
+    setTotalCapacity(battery);
   }, [pcs, battery, installation]);
   return (
     <div>
@@ -90,17 +91,7 @@ const Cabinet = () => {
             </Select>
           </FormControl>
         )}
-        {/* <div>
-          <FormControl fullWidth>
-            <InputLabel htmlFor="outlined-adornment-amount">Total Capacity</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-amount"
-              value={totalCapacity}
-              endAdornment={<InputAdornment position="end">kwh</InputAdornment>}
-              label="totalCapacity"
-            />
-          </FormControl>
-        </div> */}
+
         <div>
           <FormControlLabel
             control={<Checkbox checked={installation} onChange={handleinstallationChange} name="installation" />}
@@ -108,7 +99,18 @@ const Cabinet = () => {
           />
         </div>
       </div>
-
+      <div>
+        <FormControl fullWidth>
+          <InputLabel htmlFor="outlined-adornment-amount">Total Capacity</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-amount"
+            value={totalCapacity}
+            endAdornment={<InputAdornment position="end">kwh</InputAdornment>}
+            label="totalCapacity"
+          />
+        </FormControl>
+      </div>
+      <br></br>
       <div>
         <FormControl fullWidth>
           <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
